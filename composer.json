@@ -1,0 +1,53 @@
+{
+    "name": "kaivladimirv/insurance-contracts",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Vladimir Kaimonov",
+            "email": "kaivladimirv@gmail.com"
+        }
+    ],
+    "license": "MIT",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/kaivladimirv/url-matcher"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/kaivladimirv/collections"
+        }
+    ],
+    "require": {
+        "php": ">=8.3",
+        "php-amqplib/php-amqplib": "^3.0",
+        "ramsey/uuid": "^4.1",
+        "phpmailer/phpmailer": "^6.5",
+        "danog/madelineproto": "^8.3.2",
+        "vlucas/phpdotenv": "^5.3",
+        "amphp/amp": "^3.0.2",
+        "ext-redis": "*",
+        "ext-pdo": "*",
+        "ext-json": "*",
+        "ext-pcntl": "*",
+        "weew/url-matcher": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests"
+        }
+    },
+    "description": "",
+    "require-dev": {
+        "phpunit/phpunit": "^11.4",
+        "zircote/swagger-php": "^4.0",
+        "squizlabs/php_codesniffer": "^3.7",
+        "vimeo/psalm": "dev-master",
+        "rector/rector": "^1.2"
+    }
+}

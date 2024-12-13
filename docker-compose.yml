@@ -1,0 +1,152 @@
+services:
+  ins-contracts-nginx:
+    build:
+      context: docker/nginx
+      dockerfile: Dockerfile
+    container_name: ins-contracts-nginx
+    volumes:
+      - ./:/app:delegated
+      - shared-sock:/var/run/php
+    depends_on:
+      - ins-contracts-php-fpm
+      - ins-contracts-rabbitmq
+    ports:
+      - "80:80"
+    environment:
+      TZ: "${TZ}"
+      PHP_IDE_CONFIG: "serverName=Docker"
+    networks:
+      - ins-contracts-network
+
+  ins-contracts-php-fpm:
+    build:
+      context: docker/php-fpm
+      dockerfile: Dockerfile
+    container_name: ins-contracts-php-fpm
+    environment:
+      PHP_IDE_CONFIG: "serverName=Docker"
+      TZ: "${TZ}"
+      XDEBUG_MODE: '${XDEBUG_MODE:-off}'
+    volumes:
+      - ./:/app:delegated
+      - shared-sock:/var/run/php
+    depends_on:
+      - ins-contracts-redis
+      - ins-contracts-rabbitmq
+      - ins-contracts-postgres
+      - ins-contracts-supervisor
+    networks:
+      - ins-contracts-network
+
+  ins-contracts-php-cli:
+    build:
+      context: docker/php-cli
+      dockerfile: Dockerfile
+    container_name: ins-contracts-php-cli
+    environment:
+      TZ: "${TZ}"
+      PHP_IDE_CONFIG: "serverName=Docker"
+      XDEBUG_MODE: '${XDEBUG_MODE:-off}'
+    volumes:
+      - ./:/app:delegated
+    depends_on:
+      - ins-contracts-redis
+      - ins-contracts-rabbitmq
+      - ins-contracts-postgres
+    networks:
+      - ins-contracts-network
+
+  ins-contracts-supervisor:
+    build:
+      context: docker/supervisor
+      dockerfile: Dockerfile
+    container_name: ins-contracts-supervisor
+    environment:
+      TZ: "${TZ}"
+    volumes:
+      - ./:/app:delegated
+    depends_on:
+      - ins-contracts-redis
+      - ins-contracts-rabbitmq
+      - ins-contracts-postgres
+    networks:
+      - ins-contracts-network
+
+  ins-contracts-rabbitmq:
+    image: rabbitmq:3.8.16-management
+    working_dir: /app
+    hostname: rabbit-mq
+    container_name: ins-contracts-rabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      TZ: "${TZ}"
+      RABBITMQ_DEFAULT_USER: ${QUEUE_USERNAME}
+      RABBITMQ_DEFAULT_PASS: ${QUEUE_PASSWORD}
+    volumes:
+      - ./storages/rabbitmq:/var/lib/rabbitmq
+    networks:
+      - ins-contracts-network
+
+  ins-contracts-postgres:
+    image: postgres:13.4
+    container_name: ins-contracts-postgres
+    volumes:
+      - ./storages/postgres:/var/lib/postgresql/data
+    environment:
+      TZ: "${TZ}"
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "54320:5432"
+    networks:
+      - ins-contracts-network
+    healthcheck:
+      test: [ 'CMD', 'pg_isready', '-q', '-d', '${DB_NAME}', '-U', '${DB_USERNAME}' ]
+      retries: 3
+      timeout: 5s
+
+  ins-contracts-redis:
+    image: redis:latest
+    container_name: ins-contracts-redis
+    environment:
+      TZ: "${TZ}"
+    volumes:
+      - ./storages/redis:/data
+    command:
+      - 'redis-server'
+      - '--databases 1'
+      - '--save 900 1'
+      - '--save 300 10'
+      - '--save 60 10000'
+      - '--requirepass ${REDIS_PASSWORD}'
+    networks:
+      - ins-contracts-network
+
+  ins-contracts-mailpit:
+    image: axllent/mailpit
+    container_name: ins-contracts-mailpit
+    restart: unless-stopped
+    volumes:
+      - ./storages/mail:/data
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+    environment:
+      TZ: "${TZ}"
+      MP_MAX_MESSAGES: 5000
+      MP_DATABASE: /data/mailpit.db
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+    networks:
+      - ins-contracts-network
+
+networks:
+  ins-contracts-network:
+    driver: bridge
+
+volumes:
+  shared-sock:
+  contracts-redis:
