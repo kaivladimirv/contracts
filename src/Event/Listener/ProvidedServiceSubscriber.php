@@ -8,7 +8,6 @@ use Override;
 use App\Event\Dispatcher\EventSubscriberInterface;
 use App\Model\Contract\Event\ProvidedService\ProvidedServiceCanceledEvent;
 use App\Model\Contract\Event\ProvidedService\ProvidedServiceRegisteredEvent;
-use App\Model\DomainEventInterface;
 use App\Service\Queue\QueueClientInterface;
 
 readonly class ProvidedServiceSubscriber implements EventSubscriberInterface
@@ -26,10 +25,7 @@ readonly class ProvidedServiceSubscriber implements EventSubscriberInterface
         ];
     }
 
-    /**
-     * @param ProvidedServiceRegisteredEvent|ProvidedServiceCanceledEvent $event
-     */
-    public function onHappened(DomainEventInterface $event): void
+    public function onHappened(ProvidedServiceRegisteredEvent|ProvidedServiceCanceledEvent $event): void
     {
         $this->queueClient->connect();
         $this->queueClient->publish(

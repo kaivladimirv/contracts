@@ -105,10 +105,6 @@ readonly class DomainEventSubscriber implements EventSubscriberInterface
             ->log();
     }
 
-
-    /**
-     * @param CompanyRegisteredEvent|CompanyRegistrationConfirmedEvent $event
-     */
     private function defineInsuranceCompanyId(DomainEventInterface $event): void
     {
         $shouldDefineInsuranceCompanyId = in_array($event::class, [
@@ -117,6 +113,8 @@ readonly class DomainEventSubscriber implements EventSubscriberInterface
         ]);
 
         if ($shouldDefineInsuranceCompanyId) {
+            /** @var CompanyRegisteredEvent|CompanyRegistrationConfirmedEvent $event */
+
             $id = new InsuranceCompanyId($event->getInsuranceCompanyId()->getValue());
             $this->container->set(InsuranceCompanyId::class, $id);
         }
