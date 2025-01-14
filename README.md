@@ -4,7 +4,7 @@
 [![tests](https://github.com/kaivladimirv/contracts/actions/workflows/tests.yml/badge.svg)](https://github.com/kaivladimirv/contracts/actions/workflows/tests.yml)
 [![sast](https://github.com/kaivladimirv/contracts/actions/workflows/sast.yml/badge.svg)](https://github.com/kaivladimirv/contracts/actions/workflows/sast.yml)
 ![license](https://img.shields.io/badge/license-MIT-green)
-<a href="https://php.net"><img src="https://img.shields.io/badge/php-8.3-%238892BF" alt="PHP Programming Language"></a>
+<a href="https://php.net"><img src="https://img.shields.io/badge/php-8.4-%238892BF" alt="PHP Programming Language"></a>
 
 ## Сервис для работы с договорами страхования
 Сервис позволяет страховым компания
@@ -27,7 +27,7 @@
 ***
 
 ## Требования
-* PHP 8.3+
+* PHP 8.4+
 * PostgreSQL
 * Redis
 * RabbitMQ
@@ -35,7 +35,7 @@
 ***
 
 ## Технологии
-* PHP 8.3+
+* PHP 8.4+
 * PostgreSQL
 * Redis
 * RabbitMQ

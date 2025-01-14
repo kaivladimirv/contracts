@@ -1,4 +1,4 @@
-FROM php:8.3-cli
+FROM php:8.4-cli
 
 RUN apt-get update && apt-get install -y supervisor libzip-dev libpq-dev \
     && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \

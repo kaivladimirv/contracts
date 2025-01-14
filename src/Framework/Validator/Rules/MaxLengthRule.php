@@ -15,7 +15,7 @@ readonly class MaxLengthRule implements RuleInterface
     #[Override]
     public function validate($value): bool
     {
-        return strlen($value) <= (int) $this->maxLength;
+        return strlen((string) $value) <= (int) $this->maxLength;
     }
 
     #[Override]

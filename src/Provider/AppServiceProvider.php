@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Provider;
 
+use danog\MadelineProto\Settings\AppInfo;
 use App\Command\TelegramLogoutCommand;
 use danog\MadelineProto\Logger as MadelineProtoLogger;
 use danog\MadelineProto\Settings;
@@ -125,7 +126,7 @@ class AppServiceProvider extends AbstractServiceProvider
 
     private function addBindMadelineProtoApi(): void
     {
-        $appInfo = (new Settings\AppInfo())
+        $appInfo = (new AppInfo())
             ->setApiId((int) getenv('TELEGRAM_APP_API_ID'))
             ->setApiHash(getenv('TELEGRAM_APP_API_HASH'));
         $logger = (new Settings\Logger())
