@@ -104,7 +104,7 @@ class App
             $this->initMiddlewaresCollection();
             $this->initRouter();
 
-            $response = (new Pipeline($this->container))
+            $response = new Pipeline($this->container)
                 ->addPipe(FindRouteMiddleware::class)
                 ->addPipe(HandleRouteMiddleware::class)
                 ->handle($this->getRequest());
@@ -120,7 +120,7 @@ class App
     private function initRouter(): void
     {
         $routesConfig = new Configuration(__DIR__ . self::PATH_TO_ROUTES_INI_FILE);
-        $routeCollection = (new RoutesLoader($routesConfig))->load();
+        $routeCollection = new RoutesLoader($routesConfig)->load();
 
         $this->container->set(Router::class, new Router($routeCollection));
     }
@@ -128,7 +128,7 @@ class App
     private function initMiddlewaresCollection(): void
     {
         $middlewaresConfig = new Configuration(__DIR__ . self::PATH_TO_MIDDLEWARES_INI_FILE);
-        $middlewareCollection = (new MiddlewaresLoader($middlewaresConfig))->load();
+        $middlewareCollection = new MiddlewaresLoader($middlewaresConfig)->load();
 
         $this->container->set(MiddlewareCollection::class, $middlewareCollection);
     }

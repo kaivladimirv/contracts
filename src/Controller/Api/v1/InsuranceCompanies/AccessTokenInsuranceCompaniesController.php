@@ -59,7 +59,7 @@ class AccessTokenInsuranceCompaniesController extends AbstractController
             $accessToken = $insuranceCompany->getAccessToken();
 
             if (!$accessToken or $accessToken->isExpiredTo(new DateTimeImmutable())) {
-                $accessToken = (new AccessTokenGenerator(new DateInterval('P30D')))->generate();
+                $accessToken = new AccessTokenGenerator(new DateInterval('P30D'))->generate();
 
                 $command = new SaveAccessTokenInsuranceCompanyCommand(
                     $insuranceCompany->getId()->getValue(),

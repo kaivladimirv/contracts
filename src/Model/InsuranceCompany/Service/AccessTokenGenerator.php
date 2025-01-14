@@ -19,7 +19,7 @@ readonly class AccessTokenGenerator
     {
         return new AccessToken(
             Uuid::uuid4()->toString(),
-            (new DateTimeImmutable())->add($this->interval)
+            new DateTimeImmutable()->add($this->interval)
         );
     }
 }

@@ -114,7 +114,7 @@ class AppServiceProvider extends AbstractServiceProvider
 
     private function addBindDbConnection(): void
     {
-        $this->bindings[PDO::class] = fn() => (new DbConnectionBuilder())
+        $this->bindings[PDO::class] = fn() => new DbConnectionBuilder()
             ->setDriver(getenv('DB_DRIVER'))
             ->setHost(getenv('DB_HOST'))
             ->setPort(intval(getenv('DB_PORT')))
@@ -126,13 +126,13 @@ class AppServiceProvider extends AbstractServiceProvider
 
     private function addBindMadelineProtoApi(): void
     {
-        $appInfo = (new AppInfo())
+        $appInfo = new AppInfo()
             ->setApiId((int) getenv('TELEGRAM_APP_API_ID'))
             ->setApiHash(getenv('TELEGRAM_APP_API_HASH'));
-        $logger = (new Settings\Logger())
+        $logger = new Settings\Logger()
             ->setType(MadelineProtoLogger::FILE_LOGGER)
             ->setExtra(getenv('PATH_TO_MADELINE_LOG') . '/log.log');
-        $settings = (new Settings())->setAppInfo($appInfo)->setLogger($logger);
+        $settings = new Settings()->setAppInfo($appInfo)->setLogger($logger);
 
         $this->bindings[API::class] = fn() => new API(
             getenv('PATH_TO_MADELINE_SESSION'),
@@ -142,7 +142,7 @@ class AppServiceProvider extends AbstractServiceProvider
 
     private function addRedisConnection(): void
     {
-        $this->bindings[Redis::class] = fn() => (new RedisClientBuilder())
+        $this->bindings[Redis::class] = fn() => new RedisClientBuilder()
             ->setHost(getenv('REDIS_HOST'))
             ->setPort(intval(getenv('REDIS_PORT')))
             ->setDbIndex(intval(getenv('REDIS_DB_INDEX')))
