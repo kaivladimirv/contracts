@@ -67,6 +67,7 @@ readonly class PostgresqlPersonFetcher implements PersonFetcherInterface
     /**
      * @throws QueryBuilderException
      */
+    #[Override]
     public function isExist(InsuranceCompanyId $insuranceCompanyId, PersonId $id): bool
     {
         return $this->queryBuilder

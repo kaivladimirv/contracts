@@ -43,6 +43,7 @@ readonly class PostgresqlServiceFetcher implements ServiceFetcherInterface
     /**
      * @throws QueryBuilderException
      */
+    #[Override]
     public function isExist(InsuranceCompanyId $insuranceCompanyId, ServiceId $id): bool
     {
         return $this->queryBuilder

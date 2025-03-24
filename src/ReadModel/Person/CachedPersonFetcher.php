@@ -57,6 +57,7 @@ class CachedPersonFetcher implements PersonFetcherInterface
     /**
      * @throws QueryBuilderException
      */
+    #[Override]
     public function isExist(InsuranceCompanyId $insuranceCompanyId, PersonId $id): bool
     {
         $etagCacheItem = $this->cache->getItem($this->cacheItemKeyGenerator->generateForLastUpdate($insuranceCompanyId));

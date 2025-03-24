@@ -58,6 +58,7 @@ class CachedContractFetcher implements ContractFetcherInterface
     /**
      * @throws QueryBuilderException
      */
+    #[Override]
     public function isExist(InsuranceCompanyId $insuranceCompanyId, ContractId $contractId): bool
     {
         $etagCacheItem = $this->cache->getItem($this->cacheItemKeyGenerator->generateForLastUpdate($insuranceCompanyId));

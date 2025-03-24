@@ -57,6 +57,7 @@ class CachedServiceFetcher implements ServiceFetcherInterface
     /**
      * @throws QueryBuilderException
      */
+    #[Override]
     public function isExist(InsuranceCompanyId $insuranceCompanyId, ServiceId $id): bool
     {
         $etagCacheItem = $this->cache->getItem($this->cacheItemKeyGenerator->generateForLastUpdate($insuranceCompanyId));

@@ -44,6 +44,7 @@ readonly class PostgresqlContractFetcher implements ContractFetcherInterface
     /**
      * @throws QueryBuilderException
      */
+    #[Override]
     public function isExist(InsuranceCompanyId $insuranceCompanyId, ContractId $contractId): bool
     {
         return $this->queryBuilder
