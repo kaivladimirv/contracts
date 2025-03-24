@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Unit\Model\Contract\Entity\ContractService;
+namespace App\Tests\Unit\Model\Contract\Entity\ContractService;
 
 use App\Model\Contract\Entity\Contract\ContractId;
 use App\Model\Contract\Entity\ContractService\ContractService;

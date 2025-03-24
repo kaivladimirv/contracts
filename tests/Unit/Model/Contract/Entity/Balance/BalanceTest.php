@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Unit\Model\Contract\Entity\Balance;
+namespace App\Tests\Unit\Model\Contract\Entity\Balance;
 
 use App\Model\Contract\Entity\Contract\ContractId;
 use App\Model\Contract\Entity\ContractService\ServiceId;

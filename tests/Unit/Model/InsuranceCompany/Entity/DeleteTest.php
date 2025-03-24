@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Unit\Model\InsuranceCompany\Entity;
+namespace App\Tests\Unit\Model\InsuranceCompany\Entity;
 
 use App\Model\InsuranceCompany\Exception\EmailConfirmTokenNotSpecifiedException;
 use App\Model\InsuranceCompany\Exception\IncorrectConfirmTokenException;

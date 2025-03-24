@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Unit\Model\Service\Entity;
+namespace App\Tests\Unit\Model\Service\Entity;
 
 use App\Model\Service\Entity\InsuranceCompanyId;
 use App\Model\Service\Entity\Service;

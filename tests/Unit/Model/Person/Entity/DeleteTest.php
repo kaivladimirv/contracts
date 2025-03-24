@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Unit\Model\Person\Entity;
+namespace App\Tests\Unit\Model\Person\Entity;
 
 use App\Tests\Builder\Person\PersonBuilder;
 use PHPUnit\Framework\TestCase;

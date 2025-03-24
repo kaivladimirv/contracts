@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Unit\Model\Contract\Entity\Contract;
+namespace App\Tests\Unit\Model\Contract\Entity\Contract;
 
 use App\Tests\Builder\Contract\ContractBuilder;
 use PHPUnit\Framework\TestCase;

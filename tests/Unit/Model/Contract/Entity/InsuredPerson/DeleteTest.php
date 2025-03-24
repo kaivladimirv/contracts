@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Unit\Model\Contract\Entity\InsuredPerson;
+namespace App\Tests\Unit\Model\Contract\Entity\InsuredPerson;
 
 use App\Tests\Builder\Contract\InsuredPersonBuilder;
 use PHPUnit\Framework\TestCase;

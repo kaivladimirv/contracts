@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Unit\Model\Contract\Entity\Limit;
+namespace App\Tests\Unit\Model\Contract\Entity\Limit;
 
 use App\Model\Contract\Entity\Limit\Limit;
 use App\Model\Contract\Entity\Limit\LimitType;
