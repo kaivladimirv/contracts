@@ -38,10 +38,13 @@ class MaxAmountUnderContractIsNotExceededSpecification extends AbstractSpecifica
             return true;
         }
 
-        $this->reasonNotSatisfied =
+        $this->reasonNotSatisfied = sprintf(
             'Сумма оказанных услуг превышает максимальную сумму по договору. '
-            . 'Максимальная сумма по договору ' . $contract->getMaxAmount() . '. '
-            . 'Остаток ' . ($contract->getMaxAmount() - $amountOfServicesProvided) . '.';
+            . 'Максимальная сумма по договору %s. '
+            . 'Остаток %s.',
+            $contract->getMaxAmount(),
+            $contract->getMaxAmount() - $amountOfServicesProvided
+        );
 
         return false;
     }

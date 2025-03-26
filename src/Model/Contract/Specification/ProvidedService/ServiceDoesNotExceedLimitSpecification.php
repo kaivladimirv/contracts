@@ -51,10 +51,13 @@ class ServiceDoesNotExceedLimitSpecification extends AbstractSpecification
 
         if ($service->getLimit()->getType()->isItAmountLimiter()) {
             if ($balance->getValue() < $entity->getService()->getAmount()) {
-                $this->reasonNotSatisfied =
+                $this->reasonNotSatisfied = sprintf(
                     'Сумма оказанной услуги превышает лимит по договору. ' .
-                    'Лимит по договору ' . $service->getLimit()->getValue() . '. ' .
-                    'Остаток ' . $balance->getValue() . '.';
+                    'Лимит по договору %s. ' .
+                    'Остаток %s.',
+                    $service->getLimit()->getValue(),
+                    $balance->getValue()
+                );
 
                 return false;
             }
@@ -62,10 +65,13 @@ class ServiceDoesNotExceedLimitSpecification extends AbstractSpecification
 
         if ($service->getLimit()->getType()->isItQuantityLimiter()) {
             if ($balance->getValue() < $entity->getService()->getQuantity()) {
-                $this->reasonNotSatisfied =
+                $this->reasonNotSatisfied = sprintf(
                     'Количество оказанной услуги превышает лимит по договору. ' .
-                    'Лимит по договору ' . $service->getLimit()->getValue() . '. ' .
-                    'Остаток ' . $balance->getValue() . '.';
+                    'Лимит по договору %s. ' .
+                    'Остаток %s.',
+                    $service->getLimit()->getValue(),
+                    $balance->getValue()
+                );
 
                 return false;
             }
