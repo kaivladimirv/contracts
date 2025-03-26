@@ -75,11 +75,13 @@ readonly class SendBalanceConsumer implements ConsumerInterface
 
     private function buildMessage(BalanceDtoCollection $balances): Message
     {
-        $text = "Ваши остатки по услугам:" . PHP_EOL;
+        $lines = ['Ваши остатки по услугам:'];
 
         foreach ($balances as $balance) {
-            $text .= $balance->serviceName . ": " . $balance->balance . PHP_EOL;
+            $lines[] = sprintf("%s: %s", $balance->serviceName, $balance->balance);
         }
+
+        $text = implode(PHP_EOL, $lines);
 
         return new Message('Остатки по услугам', $text);
     }
