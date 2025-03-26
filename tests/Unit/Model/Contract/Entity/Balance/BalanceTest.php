@@ -31,12 +31,12 @@ class BalanceTest extends TestCase
         self::assertEquals($value, $balance->getValue());
 
         $addedValue = 20;
-        $expectedValue = $balance->getValue() + $addedValue;
+        $expectedValue = $balance->getValue() + (float) $addedValue;
         $balance->add($addedValue);
         self::assertEquals($expectedValue, $balance->getValue());
 
         $subtractedValue = 20;
-        $expectedValue = $balance->getValue() - $subtractedValue;
+        $expectedValue = $balance->getValue() - (float) $subtractedValue;
         $balance->subtract($subtractedValue);
         self::assertEquals($expectedValue, $balance->getValue());
     }
