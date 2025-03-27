@@ -80,7 +80,6 @@ class UpdatePersonsController extends AbstractController
 
             $formData = array_merge($form->getValidData(), ['id' => $request->getAttribute('id')]);
 
-            /* @var UpdatePersonCommand $command */
             $command = $this->hydrator->hydrate(UpdatePersonCommand::class, $formData);
 
             $handler->handle($command);

@@ -70,7 +70,6 @@ class AddInsuredPersonsController extends AbstractController
 
             $formData = array_merge($form->getValidData(), ['id' => $id->getValue()]);
 
-            /* @var AddInsuredPersonCommand $command */
             $command = $this->hydrator->hydrate(AddInsuredPersonCommand::class, $formData);
 
             $handler->handle($command);

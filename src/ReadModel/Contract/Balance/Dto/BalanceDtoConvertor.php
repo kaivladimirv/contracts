@@ -26,10 +26,7 @@ readonly class BalanceDtoConvertor
             'balance'         => $data['balance'],
         ];
 
-        /* @var BalanceDto $balanceDto */
-        $balanceDto = $this->hydrator->hydrate(BalanceDto::class, $data);
-
-        return $balanceDto;
+        return $this->hydrator->hydrate(BalanceDto::class, $data);
     }
 
     public function convertToCollection(array $data): BalanceDtoCollection

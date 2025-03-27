@@ -8,7 +8,6 @@ use Override;
 use App\Consumer\SendEmailConfirmTokenConsumer;
 use App\Framework\Command\AbstractCommand;
 use App\Framework\DIContainer\ContainerInterface;
-use App\Service\Queue\ConsumerInterface;
 use App\Service\Queue\QueueClientInterface;
 
 /**
@@ -28,7 +27,6 @@ class RunSendEmailConfirmTokenConsumerCommand extends AbstractCommand
     #[Override]
     protected function execute(): void
     {
-        /* @var ConsumerInterface $consumer */
         $consumer = $this->container->get(SendEmailConfirmTokenConsumer::class);
 
         $this->queueClient->connect();

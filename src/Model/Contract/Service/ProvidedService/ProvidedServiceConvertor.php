@@ -42,10 +42,7 @@ readonly class ProvidedServiceConvertor
             'deletionDate'    => $data['deletion_date'],
         ];
 
-        /* @var ProvidedService $providedService */
-        $providedService = $this->hydrator->hydrate(ProvidedService::class, $data);
-
-        return $providedService;
+        return $this->hydrator->hydrate(ProvidedService::class, $data);
     }
 
     public function convertToCollection(array $data): ProvidedServiceCollection

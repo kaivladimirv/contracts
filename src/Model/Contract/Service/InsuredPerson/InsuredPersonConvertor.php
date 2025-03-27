@@ -30,10 +30,7 @@ readonly class InsuredPersonConvertor
             'isAllowedToExceedLimit' => (bool) $data['is_allowed_to_exceed_limit'],
         ];
 
-        /* @var InsuredPerson $insuredPerson */
-        $insuredPerson = $this->hydrator->hydrate(InsuredPerson::class, $data);
-
-        return $insuredPerson;
+        return $this->hydrator->hydrate(InsuredPerson::class, $data);
     }
 
     public function convertToCollection(array $data): InsuredPersonCollection

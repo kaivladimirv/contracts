@@ -27,10 +27,7 @@ readonly class ServiceConvertor
             'insuranceCompanyId' => new InsuranceCompanyId($data['insurance_company_id']),
         ];
 
-        /* @var Service $service */
-        $service = $this->hydrator->hydrate(Service::class, $data);
-
-        return $service;
+        return $this->hydrator->hydrate(Service::class, $data);
     }
 
     public function convertToCollection(array $data): ServiceCollection

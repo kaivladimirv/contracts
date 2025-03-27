@@ -62,7 +62,6 @@ class UpdateInsuranceCompaniesController extends AbstractController
 
             $formData = array_merge($form->getValidData(), ['id' => $insuranceCompany->getId()->getValue()]);
 
-            /* @var UpdateInsuranceCompanyCommand $command */
             $command = $this->hydrator->hydrate(UpdateInsuranceCompanyCommand::class, $formData);
 
             $handler->handle($command);

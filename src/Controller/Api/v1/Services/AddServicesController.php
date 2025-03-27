@@ -72,7 +72,6 @@ class AddServicesController extends AbstractController
                 ]
             );
 
-            /* @var AddServiceCommand $command */
             $command = $this->hydrator->hydrate(AddServiceCommand::class, $formData);
 
             $handler->handle($command);

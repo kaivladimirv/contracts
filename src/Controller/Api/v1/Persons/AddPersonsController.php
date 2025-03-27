@@ -87,7 +87,6 @@ class AddPersonsController extends AbstractController
                 ]
             );
 
-            /* @var AddPersonCommand $command */
             $command = $this->hydrator->hydrate(AddPersonCommand::class, $formData);
 
             $handler->handle($command);

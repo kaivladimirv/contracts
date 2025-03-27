@@ -65,7 +65,6 @@ class UpdateServicesController extends AbstractController
 
             $formData = array_merge($form->getValidData(), ['id' => $request->getAttribute('id')]);
 
-            /* @var UpdateServiceCommand $command */
             $command = $this->hydrator->hydrate(UpdateServiceCommand::class, $formData);
 
             $handler->handle($command);

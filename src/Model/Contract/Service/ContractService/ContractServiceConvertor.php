@@ -31,10 +31,7 @@ readonly class ContractServiceConvertor
             'limit' => new Limit(new LimitType($data['limit_type']), floatval($data['limit_value'])),
         ];
 
-        /* @var ContractService $contractService */
-        $contractService = $this->hydrator->hydrate(ContractService::class, $data);
-
-        return $contractService;
+        return $this->hydrator->hydrate(ContractService::class, $data);
     }
 
     public function convertToCollection(array $data): ContractServiceCollection

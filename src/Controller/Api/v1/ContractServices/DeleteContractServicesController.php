@@ -41,7 +41,6 @@ class DeleteContractServicesController extends AbstractController
     public function delete(ServerRequestInterface $request, DeleteContractServiceHandler $handler): ResponseInterface
     {
         try {
-            /* @var DeleteContractServiceCommand $command */
             $command = $this->hydrator->hydrate(
                 DeleteContractServiceCommand::class,
                 [

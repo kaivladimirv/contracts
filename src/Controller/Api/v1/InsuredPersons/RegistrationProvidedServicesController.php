@@ -81,7 +81,6 @@ class RegistrationProvidedServicesController extends AbstractController
                 ]
             );
 
-            /* @var RegistrationProvidedServiceCommand $command */
             $command = $this->hydrator->hydrate(RegistrationProvidedServiceCommand::class, $formData);
 
             $handler->handle($command);

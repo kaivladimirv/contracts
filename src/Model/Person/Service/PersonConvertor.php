@@ -35,10 +35,7 @@ readonly class PersonConvertor
             'notifierType'       => !is_null($data['notifier_type']) ? new NotifierType($data['notifier_type']) : null,
         ];
 
-        /* @var Person $person */
-        $person = $this->hydrator->hydrate(Person::class, $data);
-
-        return $person;
+        return $this->hydrator->hydrate(Person::class, $data);
     }
 
     public function convertToCollection(array $data): PersonCollection

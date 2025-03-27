@@ -60,7 +60,6 @@ class RegisterInsuranceCompaniesController extends AbstractController
 
             $formData = array_merge($form->getValidData(), ['id' => $id->getValue()]);
 
-            /* @var RegisterInsuranceCompanyCommand $command */
             $command = $this->hydrator->hydrate(RegisterInsuranceCompanyCommand::class, $formData);
 
             $handler->handle($command);

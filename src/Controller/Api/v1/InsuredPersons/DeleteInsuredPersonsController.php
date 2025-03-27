@@ -40,7 +40,6 @@ class DeleteInsuredPersonsController extends AbstractController
     public function delete(ServerRequestInterface $request, DeleteInsuredPersonHandler $handler): ResponseInterface
     {
         try {
-            /* @var DeleteInsuredPersonCommand $command */
             $command = $this->hydrator->hydrate(
                 DeleteInsuredPersonCommand::class,
                 [

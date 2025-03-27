@@ -48,7 +48,6 @@ class DeleteInsuranceCompaniesController extends AbstractController
             /* @var InsuranceCompany $insuranceCompany */
             $insuranceCompany = $request->getAttribute('insuranceCompany');
 
-            /* @var DeleteInsuranceCompanyCommand $command */
             $command = $this->hydrator->hydrate(
                 DeleteInsuranceCompanyCommand::class,
                 ['id' => $insuranceCompany->getId()->getValue()]

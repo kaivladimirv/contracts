@@ -11,7 +11,6 @@ use App\Framework\Http\ServerRequestInterface;
 use App\Framework\Http\ResponseInterface;
 use App\Framework\Middleware\MiddlewareInterface;
 use App\Framework\Middleware\RequestHandlerInterface;
-use App\Model\InsuranceCompany\Entity\InsuranceCompany;
 use App\Model\InsuranceCompany\Entity\InsuranceCompanyId;
 use App\Model\InsuranceCompany\Repository\InsuranceCompanyRepositoryInterface;
 use DateTimeImmutable;
@@ -32,7 +31,6 @@ readonly class TokenAuthMiddleware implements MiddlewareInterface
             return new JsonResponse(401, ['message' => 'Не указан access-токен']);
         }
 
-        /* @var InsuranceCompany $insuranceCompany */
         if (!$insuranceCompany = $this->repository->findOneByAccessToken($accessToken)) {
             return new JsonResponse(401, ['message' => 'Access-токен не существует']);
         }

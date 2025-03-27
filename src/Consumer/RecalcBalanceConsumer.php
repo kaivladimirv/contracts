@@ -30,7 +30,6 @@ readonly class RecalcBalanceConsumer implements ConsumerInterface
     {
         $data = json_decode((string) $message->getBody(), true);
 
-        /* @var RecalcBalanceCommand $command */
         $command = $this->hydrator->hydrate(RecalcBalanceCommand::class, $data);
 
         $this->handler->handle($command);

@@ -28,10 +28,7 @@ readonly class DebtorDtoConvertor
             'debt'             => $data['debt'],
         ];
 
-        /* @var DebtorDto $debtorDto */
-        $debtorDto = $this->hydrator->hydrate(DebtorDto::class, $data);
-
-        return $debtorDto;
+        return $this->hydrator->hydrate(DebtorDto::class, $data);
     }
 
     public function convertToCollection(array $data): DebtorDtoCollection

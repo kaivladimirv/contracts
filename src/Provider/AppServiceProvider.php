@@ -156,7 +156,6 @@ class AppServiceProvider extends AbstractServiceProvider
             $insuranceCompanyId = $this->container->get(InsuranceCompanyId::class);
             $actorId = new ActorId($insuranceCompanyId->getValue());
 
-            /* @var QueryBuilder $queryBuilder */
             $queryBuilder = $this->container->get(QueryBuilder::class);
 
             return new DbLoggerActivity($actorId, $queryBuilder);

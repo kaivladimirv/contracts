@@ -72,7 +72,6 @@ class UpdateContractServicesController extends AbstractController
                 ]
             );
 
-            /* @var UpdateContractServiceCommand $command */
             $command = $this->hydrator->hydrate(UpdateContractServiceCommand::class, $formDate);
 
             $handler->handle($command);

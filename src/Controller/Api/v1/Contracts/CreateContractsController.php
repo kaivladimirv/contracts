@@ -85,7 +85,6 @@ class CreateContractsController extends AbstractController
                 ]
             );
 
-            /* @var CreateContractCommand $command */
             $command = $this->hydrator->hydrate(CreateContractCommand::class, $formData);
 
             $handler->handle($command);

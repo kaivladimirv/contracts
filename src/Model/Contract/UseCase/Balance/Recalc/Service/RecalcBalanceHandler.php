@@ -8,7 +8,6 @@ use App\Model\Contract\Entity\Balance\Balance;
 use App\Model\Contract\Entity\Contract\ContractId;
 use App\Model\Contract\Entity\ContractService\ContractService;
 use App\Model\Contract\Entity\ContractService\ServiceId;
-use App\Model\Contract\Entity\InsuredPerson\InsuredPerson;
 use App\Model\Contract\Entity\InsuredPerson\InsuredPersonId;
 use App\Model\Contract\Repository\Balance\BalanceRepositoryInterface;
 use App\Model\Contract\Repository\ContractService\ContractServiceRepositoryInterface;
@@ -38,7 +37,6 @@ readonly class RecalcBalanceHandler
 
         $insuredPersonIds = $this->insuredPersonFetcher->getAllIds($contractId);
 
-        /* @var InsuredPerson $insuredPerson */
         foreach ($insuredPersonIds as $insuredPersonId) {
             $insuredPersonId = new InsuredPersonId($insuredPersonId);
             $balance = $this->buildBalance($insuredPersonId, $contractService);

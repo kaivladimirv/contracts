@@ -22,9 +22,6 @@ readonly class ExpenseDtoConvertor
             'amount'   => isset($data['amount']) ? (float) $data['amount'] : 0,
         ];
 
-        /* @var ExpenseDto $expenseDto */
-        $expenseDto = $this->hydrator->hydrate(ExpenseDto::class, $data);
-
-        return $expenseDto;
+        return $this->hydrator->hydrate(ExpenseDto::class, $data);
     }
 }

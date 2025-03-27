@@ -95,7 +95,6 @@ readonly class DomainEventSubscriber implements EventSubscriberInterface
     {
         $this->defineInsuranceCompanyId($event);
 
-        /* @var LoggerActivityInterface $loggerActivity */
         $loggerActivity = $this->container->get(LoggerActivityInterface::class);
 
         $loggerActivity

@@ -30,9 +30,6 @@ readonly class BalanceConvertor
             'balance'         => $data['balance'],
         ];
 
-        /* @var Balance $balance */
-        $balance = $this->hydrator->hydrate(Balance::class, $data);
-
-        return $balance;
+        return $this->hydrator->hydrate(Balance::class, $data);
     }
 }

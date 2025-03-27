@@ -50,7 +50,6 @@ class CancelRegistrationProvidedServicesController extends AbstractController
         CancelRegistrationProvidedServiceHandler $handler
     ): JsonResponse {
         try {
-            /* @var CancelRegistrationProvidedServiceCommand $command */
             $command = $this->hydrator->hydrate(
                 CancelRegistrationProvidedServiceCommand::class,
                 [

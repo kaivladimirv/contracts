@@ -35,10 +35,7 @@ readonly class ContractConvertor
             'maxAmount'          => $data['max_amount'],
         ];
 
-        /* @var Contract $contract */
-        $contract = $this->hydrator->hydrate(Contract::class, $data);
-
-        return $contract;
+        return $this->hydrator->hydrate(Contract::class, $data);
     }
 
     /**

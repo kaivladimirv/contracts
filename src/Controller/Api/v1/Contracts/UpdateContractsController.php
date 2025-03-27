@@ -78,7 +78,6 @@ class UpdateContractsController extends AbstractController
 
             $formData = array_merge($form->getValidData(), ['id' => $request->getAttribute('id')]);
 
-            /* @var UpdateContractCommand $command */
             $command = $this->hydrator->hydrate(UpdateContractCommand::class, $formData);
 
             $handler->handle($command);
