@@ -20,8 +20,6 @@ abstract class AbstractAndSpecification extends AbstractSpecification
     final public function isSatisfiedBy(object $entity): bool
     {
         foreach ($this->getSpecificationClassNames() as $specificationClass) {
-
-            /** @var SpecificationInterface $specification */
             $specification = $this->container->get($specificationClass);
 
             if (!$specification->isSatisfiedBy($entity)) {
@@ -34,5 +32,8 @@ abstract class AbstractAndSpecification extends AbstractSpecification
         return true;
     }
 
+    /**
+     * @return array<int, class-string<SpecificationInterface>>
+     */
     abstract protected function getSpecificationClassNames(): array;
 }
