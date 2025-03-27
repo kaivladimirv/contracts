@@ -41,7 +41,7 @@ readonly class SendEmailConfirmTokenConsumer implements ConsumerInterface
 
     private function buildMessage(string $token): Message
     {
-        $text = "Ваш компания успешно зарегистрирована.<br>";
+        $text = "Ваша компания успешно зарегистрирована.<br>";
         $text .= "Токен подтверждения $token.";
 
         return new Message('Подтверждение электронного адреса', $text);
